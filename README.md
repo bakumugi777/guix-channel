@@ -17,7 +17,13 @@ other channels you use:
 ```scheme
 (channel
  (name 'bakumugi)
- (url "https://github.com/bakumugi777/guix-channel"))
+ (url "https://github.com/bakumugi777/guix-channel.git")
+ (branch "main")
+ (introduction
+  (make-channel-introduction
+   "4c2fd67736bc39da109f6a576bbc1a8555b497e7"
+   (openpgp-fingerprint
+    "0D7D C289 4AB5 E10E 94FC  B671 E24A F5CC 0C6E 7E45"))))
 ```
 
 Then update Guix:
@@ -26,7 +32,7 @@ Then update Guix:
 guix pull -C channels.scm
 ```
 
-Until the repository is published, a local checkout can be tested with:
+A local checkout can be tested without installing the channel with:
 
 ```sh
 guix build -L . -e '(@ (bakumugi packages desktop) kaname)'
